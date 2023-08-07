@@ -1,11 +1,25 @@
+using CustomList;
+
 namespace CustomListsTest
 {
     [TestClass]
-    public class UnitTest1
+    public class AddTestMethod
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Add_StoreDifferentDataTypes()
         {
+         
+            //Arrange
+            CustomList<int> myList = new CustomList<int>();
+
+            //Act
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+
+            //Assert
+            
+            Assert.AreEqual(3, myList.Count);
         }
     }
 }
