@@ -46,15 +46,7 @@ namespace CustomList
             count++;
         }
         
-        public int Count
-        {
-            get { return count; }
-        }
-
-        public int Capacity 
-        { 
-            get { return capacity; } 
-        }
+   
     
         public bool Remove(T item)
         {
@@ -85,6 +77,34 @@ namespace CustomList
             return null;
         }
 
-     
+        public int Count
+        {
+            get { return count; }
+        }
+
+        public int Capacity
+        {
+            get { return capacity; }
+        }
+
+        public T this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= count)
+                {
+                    throw new IndexOutOfRangeException($"Index {index} is out of range.");
+                }
+                return items[index];
+            }
+            set
+            {
+                if (index < 0 || index >= count)
+                {
+                    throw new IndexOutOfRangeException($"Index {index} is out of range.");
+                }
+                items[index] = value;
+            }
+        }
     }
 }
