@@ -52,6 +52,30 @@ namespace CustomListsTest
             Assert.AreEqual(8, increasedCapacity);
         }
 
+        [TestMethod]
+
+        public void CustomList_AccessAnElementsByIndex()
+        {
+            //Arrange
+            CustomList<string> myList = new CustomList<string>();
+
+            //Act
+            myList.Add("Pineapple");
+            myList.Add("Pear");
+
+            string firstElement = myList[0];
+            string secondElement = myList[1];
+
+            myList[1] = "Apple";
+
+            //Assert
+            Assert.AreEqual("Pineapple", firstElement);
+            Assert.AreEqual("Pear", secondElement);
+            Assert.AreEqual("Apple", myList[1]);
+
+
+        }
+
         
     }
 }
