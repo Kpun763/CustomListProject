@@ -50,6 +50,11 @@ namespace CustomList
         {
             get { return count; }
         }
+
+        public int Capacity 
+        { 
+            get { return capacity; } 
+        }
     
         public bool Remove(T item)
         {
