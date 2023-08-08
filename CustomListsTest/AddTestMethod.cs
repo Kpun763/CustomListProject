@@ -258,7 +258,71 @@ namespace CustomListsTest
             
         }
 
-       
+        [TestMethod]
+
+        public void ToString_EmptyList_ShouldReturnEmptyBrackets()
+        {
+            //Arrange
+            CustomList<int> myList = new CustomList<int>();
+
+
+            //Act
+            string result = myList.ToString();
+
+
+            //Assert
+            Assert.AreEqual("[]", result);
+        }
+
+        [TestMethod]
+
+        public void ToString_ListWithOneItem_ShouldReturnSingleItemInBrackets()
+        {
+            //Arrange
+            CustomList<string> myList = new CustomList<string>();
+            myList.Add("Pineapple");
+
+            //Act
+            string result = myList.ToString();
+
+            //Assert
+            Assert.AreEqual("[Pineapple]", result);
+        }
+
+        [TestMethod]
+
+        public void ToString_ListWithMultipleItems_ShouldReturnItemsInBracketsSeperatedByComma()
+        {
+            //Arrange
+            CustomList<int> myList = new CustomList<int>();
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+
+            //Act
+            string result = myList.ToString();
+
+            //Assert
+            Assert.AreEqual("[1, 2, 3,]", result);
+        }
+
+        [TestMethod]
+
+        public void ToString_ListAfterAddingAndRemovingItems_ShouldReturnUpdatedListContents()
+        {
+            //Arrange
+            CustomList<char> myList = new CustomList<char>();
+            myList.Add('A');
+            myList.Add('B');
+            myList.Add('C');
+            myList.Remove('B');
+
+            //Act
+            string result = myList.ToString();
+
+            //Assert
+            Assert.AreEqual("[A, C]", result);
+        }
      
         
     }
