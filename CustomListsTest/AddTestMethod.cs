@@ -74,7 +74,7 @@ namespace CustomListsTest
 
         [TestMethod]
 
-        public void Remove_ItemExistsInList_ShouldReturnTrueAndRemoveItem()
+        public void Remove_ItemsExistsInList_ShouldReturnTrueAndRemoveItems()
         {
             //Arrange
             CustomList<int> myList = new CustomList<int>();
@@ -85,11 +85,15 @@ namespace CustomListsTest
 
             //Act
             bool removed1 = myList.Remove(2);
+            bool removed2 = myList.Remove(4);
             
             
 
             //Assert
-            Assert.IsFalse(removed1);
+            Assert.IsTrue(removed1);
+            Assert.IsTrue(removed2);
+            Assert.AreEqual(2, myList.Count);
+            
         }
 
         [TestMethod]
@@ -166,6 +170,7 @@ namespace CustomListsTest
            
         }
 
+       
      
         
     }
