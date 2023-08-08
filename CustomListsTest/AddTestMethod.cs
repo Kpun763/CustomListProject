@@ -102,15 +102,16 @@ namespace CustomListsTest
         {
             //Arrange
             CustomList<string> myList = new CustomList<string>();
-            myList.Add("One");
+            myList.Add("Pineapple");
+            myList.Add("Pear");
            
 
             //Act
-            bool removed = myList.Remove("One");
+            bool removed = myList.Remove("Strawberry");
 
             //Assert
             Assert.IsFalse(removed); //This should fail as method is not implemented
-            Assert.AreEqual(0, myList.Count); //This should fail as method is not implemented
+            Assert.AreEqual(2, myList.Count); //This should fail as method is not implemented
         }
 
         [TestMethod]
@@ -144,12 +145,12 @@ namespace CustomListsTest
 
             //Act
             bool removed1 = myList.Remove('B');
-            bool removed2 = myList.Remove('c');
+            bool removed2 = myList.Remove('C');
 
             //Assert
             Assert.IsTrue(removed1); //This should return true, as B does exist in my list and is removed
             Assert.IsTrue(removed2); //This should return true, as c does exist in my list and is removed
-            Assert.AreEqual(2, myList.Count);
+            Assert.AreEqual(1, myList.Count);
         }
 
         [TestMethod]
@@ -166,8 +167,9 @@ namespace CustomListsTest
             bool removed = myList.Remove("Pear");
 
             //Assert
-            Assert.IsFalse(removed);
-           
+            Assert.IsTrue(removed);
+            Assert.AreEqual(2, myList.Count);
+            
         }
 
        
