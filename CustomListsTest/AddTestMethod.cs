@@ -9,7 +9,7 @@ namespace CustomListsTest
         [TestMethod]
         public void Add_StoreDifferentDataTypes()
         {
-         
+
             //Arrange
             CustomList<int> myList = new CustomList<int>();
 
@@ -19,7 +19,7 @@ namespace CustomListsTest
             myList.Add(3);
 
             //Assert
-            
+
             Assert.AreEqual(3, myList.Count);
         }
 
@@ -47,7 +47,7 @@ namespace CustomListsTest
             int increasedCapacity = myList.Capacity;
 
             //Assert
-           
+
             Assert.AreEqual(8, increasedCapacity);
         }
 
@@ -117,7 +117,7 @@ namespace CustomListsTest
             myList.Add(2);
 
             //Act
-            myList.Add(3); 
+            myList.Add(3);
 
             //Assert
             Assert.AreEqual(3, myList.Count);
@@ -172,14 +172,14 @@ namespace CustomListsTest
             //Act
             bool removed1 = myList.Remove(2);
             bool removed2 = myList.Remove(4);
-            
-            
+
+
 
             //Assert
             Assert.IsTrue(removed1);
             Assert.IsTrue(removed2);
             Assert.AreEqual(2, myList.Count);
-            
+
         }
 
         [TestMethod]
@@ -190,7 +190,7 @@ namespace CustomListsTest
             CustomList<string> myList = new CustomList<string>();
             myList.Add("Pineapple");
             myList.Add("Pear");
-           
+
 
             //Act
             bool removed = myList.Remove("Strawberry");
@@ -212,7 +212,7 @@ namespace CustomListsTest
 
 
             //Act
-            bool removed = myList.Remove(4); 
+            bool removed = myList.Remove(4);
 
             //Assert
             Assert.IsFalse(removed); //This should return false because the list is empty
@@ -227,7 +227,7 @@ namespace CustomListsTest
             myList.Add('A');
             myList.Add('B');
             myList.Add('C');
-            
+
 
             //Act
             bool removed1 = myList.Remove('B');
@@ -255,7 +255,7 @@ namespace CustomListsTest
             //Assert
             Assert.IsTrue(removed);
             Assert.AreEqual(2, myList.Count);
-            
+
         }
 
         [TestMethod]
@@ -342,7 +342,7 @@ namespace CustomListsTest
 
         [TestMethod]
 
-        public void PlusOperator_TwoNonEmptyLists_ShouldCombimeLists()
+        public void PlusOperator_TwoNoneEmptyLists_ShouldCombimeLists()
         {
             //Arrange
             CustomList<string> list1 = new CustomList<string>();
@@ -364,20 +364,28 @@ namespace CustomListsTest
 
         [TestMethod]
 
-        public void PlusOperator_TwoListsOfDifferentDataTypes_ShouldFail()
+        public void PlusOperator_TwoNonEmptyLists_ShouldCombineLists()
         {
-            //Arrange
+            // Arrange
             CustomList<int> list1 = new CustomList<int>();
-            CustomList<string> list2 = new CustomList<string>();
+            list1.Add(1);
+            list1.Add(2);
 
-            //Act
+            CustomList<int> list2 = new CustomList<int>();
+            list2.Add(3);
+            list2.Add(4);
 
-            //Operator cannot be applied to the lists
+            // Act
+            CustomList<int> result = list1 + list2;
 
-            //Assert
-            Assert.Fail("Compile error");
+            // Assert
+            Assert.AreEqual(4, result.Count);
+            Assert.AreEqual(1, result[0]);
+            Assert.AreEqual(2, result[1]);
+            Assert.AreEqual(3, result[2]);
+            Assert.AreEqual(4, result[3]);
+
         }
-     
-        
+
     }
 }
