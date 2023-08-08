@@ -323,6 +323,60 @@ namespace CustomListsTest
             //Assert
             Assert.AreEqual("[A,C]", result);
         }
+
+        [TestMethod]
+
+        public void PlusOperator_TwoEmptyLines_shouldReturnEmptyList()
+        {
+            //Arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+
+
+            //Act
+            CustomList<int> result = list1 + list2;
+
+            //Assert
+            Assert.AreEqual(0, result.Count);
+        }
+
+        [TestMethod]
+
+        public void PlusOperator_TwoNonEmptyLists_ShouldCombimeLists()
+        {
+            //Arrange
+            CustomList<string> list1 = new CustomList<string>();
+            list1.Add("You're");
+            list1.Add("Welcome");
+
+            CustomList<string> list2 = new CustomList<string>();
+            list2.Add("!");
+
+            //Act
+            CustomList<string> result = list1 + list2;
+
+            //Assert
+            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual("You're", result[0]);
+            Assert.AreEqual("Welcome", result[1]);
+            Assert.AreEqual("!", result[2]);
+        }
+
+        [TestMethod]
+
+        public void PlusOperator_TwoListsOfDifferentDataTypes_ShouldFail()
+        {
+            //Arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<string> list2 = new CustomList<string>();
+
+            //Act
+
+            //Operator cannot be applied to the lists
+
+            //Assert
+            Assert.Fail("Compile error");
+        }
      
         
     }
