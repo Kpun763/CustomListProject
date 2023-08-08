@@ -1,4 +1,5 @@
 using CustomList;
+using System.Net.Http.Headers;
 
 namespace CustomListsTest
 {
@@ -74,6 +75,91 @@ namespace CustomListsTest
 
         [TestMethod]
 
+        public void Add_AddSingleItem_ShouldIncreaseCountToOne()
+        {
+            //Arrange
+            CustomList<int> myList = new CustomList<int>();
+
+            //Act
+            myList.Add(50);
+
+            //Assert
+            Assert.AreEqual(1, myList.Count);
+            Assert.AreEqual(50, myList[0]);
+        }
+
+        [TestMethod]
+
+        public void Add_AddMultipleItems_ShouldIncreaseCountAndMaintainOrder()
+        {
+            //Arrange
+            CustomList<string> myList = new CustomList<string>();
+
+            //Act
+            myList.Add("Pineapple");
+            myList.Add("Pear");
+            myList.Add("Strawbery");
+
+            //Assert
+            Assert.AreEqual(3, myList.Count);
+            Assert.AreEqual("Pineapple", myList[0]);
+            Assert.AreEqual("Pear", myList[1]);
+            Assert.AreEqual("Strawberry", myList[2]);
+
+        }
+
+        [TestMethod]
+        public void Add_ThirdItemAddedIsFoundAtCorrectIndex()
+        {
+            //Arrange
+            CustomList<int> myList = new CustomList<int>();
+            myList.Add(1);
+            myList.Add(2);
+
+            //Act
+            myList.Add(3); 
+
+            //Assert
+            Assert.AreEqual(3, myList.Count);
+            Assert.AreEqual(3, myList[2]);
+        }
+
+        [TestMethod]
+
+        public void Add_AddNullItem_ShouldIncreaseCountAndAddNullToTheList()
+        {
+            //Arrange
+            CustomList<string> myList = new CustomList<string>();
+
+            //Act
+            myList.Add(null);
+
+            //Assert
+            Assert.AreEqual(1, myList.Count);
+            Assert.IsNull(myList[0]);
+        }
+
+        [TestMethod]
+
+        public void Add_AddSameItemMultipleTimes_ShouldIncreaseCountAndMaintainORder()
+        {
+            //Arrange
+            CustomList<string> myList = new CustomList<string>();
+
+            //Act
+            myList.Add("Pineapple");
+            myList.Add("Pineapple");
+            myList.Add("Pineapple");
+
+
+            //Assert
+            Assert.AreEqual(2, myList.Count);
+            Assert.AreEqual("Pineapple", myList[0]);
+            Assert.AreEqual("Pineapple", myList[1]);
+        }
+
+        [TestMethod]
+
         public void Remove_ItemsExistsInList_ShouldReturnTrueAndRemoveItems()
         {
             //Arrange
@@ -126,7 +212,7 @@ namespace CustomListsTest
 
 
             //Act
-            bool removed = myList.Remove(4); // 
+            bool removed = myList.Remove(4); 
 
             //Assert
             Assert.IsFalse(removed); //This should return false because the list is empty
