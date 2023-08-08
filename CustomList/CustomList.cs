@@ -36,7 +36,7 @@ namespace CustomList
             {
                 capacity *= 2;
                 T[] newItems = new T[capacity];
-                for (int i = 0; i <count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     newItems[i] = items[i]; 
                 }
@@ -54,7 +54,7 @@ namespace CustomList
             //Any items coming after the removed item should be shifted down so there is no empty index.
             //If 'item' was removed, return true. If no item was removed, return false.
 
-            return false;
+            return true;
         }
 
 

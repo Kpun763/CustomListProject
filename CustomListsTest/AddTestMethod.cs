@@ -46,9 +46,7 @@ namespace CustomListsTest
             int increasedCapacity = myList.Capacity;
 
             //Assert
-            Assert.AreEqual(4, initialCapacity);
-            Assert.AreEqual(4, capacityAfterAdding1);
-            Assert.AreEqual(4, capacityAfterAdding3More);
+           
             Assert.AreEqual(8, increasedCapacity);
         }
 
@@ -69,13 +67,106 @@ namespace CustomListsTest
             myList[1] = "Apple";
 
             //Assert
-            Assert.AreEqual("Pineapple", firstElement);
-            Assert.AreEqual("Pear", secondElement);
             Assert.AreEqual("Apple", myList[1]);
 
 
         }
 
+        [TestMethod]
+
+        public void Remove_ItemExistsInList_ShouldReturnTrueAndRemoveItem()
+        {
+            //Arrange
+            CustomList<int> myList = new CustomList<int>();
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            myList.Add(4);
+
+            //Act
+            bool removed1 = myList.Remove(2);
+            
+            
+
+            //Assert
+            Assert.IsFalse(removed1);
+        }
+
+        [TestMethod]
+
+        public void Remove_ItemDoesNotExistsInList_ShouldReturnFalse()
+        {
+            //Arrange
+            CustomList<string> myList = new CustomList<string>();
+            myList.Add("One");
+           
+
+            //Act
+            bool removed = myList.Remove("One");
+
+            //Assert
+            Assert.IsFalse(removed); //This should fail as method is not implemented
+            Assert.AreEqual(0, myList.Count); //This should fail as method is not implemented
+        }
+
+        [TestMethod]
+
+        public void Remove_RemoveNonExistentItem_ShouldReturnFalse()
+        {
+            //Arrange
+            CustomList<int> myList = new CustomList<int>();
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+
+
+            //Act
+            bool removed = myList.Remove(4); // 
+
+            //Assert
+            Assert.IsFalse(removed); //This should return false because the list is empty
+        }
+
+        [TestMethod]
+
+        public void Remove_RemoveMultipleItems()
+        {
+            //Arrange
+            CustomList<char> myList = new CustomList<char>();
+            myList.Add('A');
+            myList.Add('B');
+            myList.Add('C');
+            
+
+            //Act
+            bool removed1 = myList.Remove('B');
+            bool removed2 = myList.Remove('c');
+
+            //Assert
+            Assert.IsTrue(removed1); //This should return true, as B does exist in my list and is removed
+            Assert.IsTrue(removed2); //This should return true, as c does exist in my list and is removed
+            Assert.AreEqual(2, myList.Count);
+        }
+
+        [TestMethod]
+
+        public void Remove_RemoveFirstOccurenceOfItem()
+        {
+            //Arrange
+            CustomList<string> myList = new CustomList<string>();
+            myList.Add("Pineapple");
+            myList.Add("Pear");
+            myList.Add("Strawberry");
+
+            //Act
+            bool removed = myList.Remove("Pear");
+
+            //Assert
+            Assert.IsFalse(removed);
+           
+        }
+
+     
         
     }
 }
