@@ -82,8 +82,27 @@ namespace CustomList
 
         public override string ToString()
         {
+            StringBuilder sb = new StringBuilder();
+
+            //Append opening bracket
+            sb.Append("[");
+
+            //Iterates through the items and append them to the StringBuilder
+            for (int i = 0; i < count; i++)
+            {
+                sb.Append(items[i]);
+
+                if (i < count - 1)
+                {
+                    sb.Append(",");
+                }
+            }
+            //Append closing bracket
+            sb.Append("]");
+
             //returns a single string that contains all items from array
-            return "";
+
+            return sb.ToString();
         }
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)

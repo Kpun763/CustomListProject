@@ -303,7 +303,7 @@ namespace CustomListsTest
             string result = myList.ToString();
 
             //Assert
-            Assert.AreEqual("[1, 2, 3,]", result);
+            Assert.AreEqual("[1,2,3]", result);
         }
 
         [TestMethod]
@@ -321,7 +321,7 @@ namespace CustomListsTest
             string result = myList.ToString();
 
             //Assert
-            Assert.AreEqual("[A, C]", result);
+            Assert.AreEqual("[A,C]", result);
         }
      
         
