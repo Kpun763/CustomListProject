@@ -387,5 +387,67 @@ namespace CustomListsTest
 
         }
 
+        [TestMethod]
+
+        public void MinusOperator_RemoveItemsFromEmptyList_ShouldReturnEmptyList()
+        {
+            //Arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            list2.Add(1);
+            list2.Add(2);
+
+            //Act
+            CustomList<int> result = list1 - list2;
+
+            //Assert
+            Assert.AreEqual(0, result.Count);
+        }
+
+        [TestMethod]
+
+        public void MinusOperator_RemoveItemsFromNoneEmptyList_ShouldRemoveITemsFromList()
+        {
+            //Arrange
+            CustomList<string> list1 = new CustomList<string>();
+            list1.Add("Pineapple");
+            list1.Add("Pear");
+            list1.Add("Strawberry");
+
+            CustomList<string> list2 = new CustomList<string>();
+            list2.Add("Pear");
+
+            //Act
+            CustomList<string> result = list1 - list2;
+
+            //Assert
+            Assert.AreEqual(2, result.Count);
+            Assert.AreEqual("Pineapple", result[0]);
+            Assert.AreEqual("Strawberry", result[1]);
+        }
+
+        [TestMethod]
+
+        public void MinusOperator_RemoveNoneexistentItems_ShouldNotAffectList()
+        {
+            //Arrange
+            CustomList<int> list1 = new CustomList<int>();
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(3);
+
+            CustomList<int> list2 = new CustomList<int>();
+            list2.Add(4);
+
+            //Act
+            CustomList<int> result = list1 - list2;
+
+            //Assert
+            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual(1, result[0]);
+            Assert.AreEqual(2, result[1]);
+            Assert.AreEqual(3, result[2]);
+        }
+
     }
 }
