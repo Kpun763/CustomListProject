@@ -98,7 +98,7 @@ namespace CustomListsTest
             //Act
             myList.Add("Pineapple");
             myList.Add("Pear");
-            myList.Add("Strawbery");
+            myList.Add("Strawberry");
 
             //Assert
             Assert.AreEqual(3, myList.Count);
@@ -153,7 +153,7 @@ namespace CustomListsTest
 
 
             //Assert
-            Assert.AreEqual(2, myList.Count);
+            Assert.AreEqual(3, myList.Count);
             Assert.AreEqual("Pineapple", myList[0]);
             Assert.AreEqual("Pineapple", myList[1]);
         }

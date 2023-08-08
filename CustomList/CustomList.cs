@@ -31,7 +31,19 @@ namespace CustomList
             //'item' parameter should be added to internal 'items' array
             //if items array is at capacity, double capacity and create new array
             //transfer all items to new array
-      
+
+            if (count == capacity)
+            {
+                capacity *= 2;
+                T[] newItems = new T[capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    newItems[i] = items[i];
+                }
+                items = newItems;
+            }
+            items[count] = item;
+            count++;
 
         }
 
